@@ -1,0 +1,10 @@
+del(H,[H|T],T).
+del(X,[H|T],[H|T1]):-del(X,T,T1).
+read_list(L):-write('Enter the list: '),read(L).
+read_ele(n):-write('Enter the element to be deleted: '),read(n).
+delete:-
+    read_list(L),
+    read_ele(n),
+    del(n,L,R),
+    write('Result after deletion: '),
+    write(R).

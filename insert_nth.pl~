@@ -1,0 +1,13 @@
+insert_nth(I, 1, L, [I|L]). % if inserting at first position, simply add I to the beginning of the list
+insert_nth(I, N, [H|T], [H|R]) :- N1 is N-1, insert_nth(I, N1, T, R). % if not inserting at first position, remove the head element and recursively call insert_nth on the tail
+insert_nth(_, _, [], []). % if the list is empty, there is no Nth position to insert into, so return an empty list as well.
+read_list(L):-write('Enter the list: '),read(L).
+pos(N):-write('Enter the position of element to be inserted: '),read(N).
+ele(I):-write('Enter the element to insert: '),read(I).
+insert_n:-
+    read_list(L),
+    pos(N),
+    ele(I),
+    insert_nth(I,N,L,R),
+    write('The Result after insertion: '),
+    write(R).
